@@ -1,0 +1,36 @@
+/* admin_styles.css */
+
+/* General Body Style */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #343a40;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav .profile {
+    display: flex;
+    align-items: center;
+}
+
+nav .profile .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+nav .Username {
+    font-size: 1.2em;
+    font-weight: bold
+}
