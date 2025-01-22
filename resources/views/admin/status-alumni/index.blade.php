@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,49 +8,46 @@
     <link rel="stylesheet" href="{{ asset('css/status.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nav_admin.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+         body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 800px;
+            flex-direction: column;
+            display: flex;
+            background-color: #f4f7fa;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="profile">
-            <div class="logo">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo">
-            </div>
-            <div class="Username">
-                {{ Auth::user()->name }}
-            </div>
+   
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+            <p class="username">Welcome, {{ Auth::user()->name }}</p>
         </div>
-        <div class="menu">
-            <button onclick="window.location='{{ route('admin.dashboard') }}';">Home</button>
-            <button onclick="window.location='{{ route('admin.alumni.index') }}';">Data Alumni</button>
-            <button onclick="window.location='{{ route('admin.TracerKuliah.index') }}';">Tracer Kuliah</button>
-            <button onclick="window.location='{{ route('admin.TracerKerja.index') }}';">Tracer Kerja</button>
+        <nav class="menu">
+            <a href="{{ route('admin.dashboard') }}" class="menu-item">Dashboard</a>
+            <a href="{{ route('admin.alumni.index') }}" class="menu-item">Alumni Data</a>
+            <a href="{{ route('admin.TracerKuliah.index') }}" class="menu-item">Tracer Kuliah</a>
+            <a href="{{ route('admin.TracerKerja.index') }}" class="menu-item">Tracer Kerja</a>
+        </nav>
+        <div class="sidebar-footer">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="logout-btn">Logout</button>
+            </form>
         </div>
-        <div class="menu_dropdown">
-            <button class="burger-icon" id="burgerMenu">
-                <img src="{{ asset('icons/dropdown.png') }}" alt="Icons">
-            </button>
-            <ul class="dropdown" id="dropdownMenu">
-                <button onclick="window.location='{{ route('login') }}';" class="dropdown-icon">
-                    <img src="{{ asset('icons/dropdown.png') }}" alt="Icons">
-                </button>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
-                    @csrf
-                    <button type="submit" class="dropdown-icon">
-                        <img src="{{ asset('icons/logout.png') }}" alt="Logout Icon">
-                    </button>
-                </form>
-            </ul>
-        </div>
-    </nav>
+    </aside>
 
     <!-- Main Content -->
     <div class="container">
-        <h1>Pengaturan Privasi Alumni</h1>
+        <h1 class="title">Pengaturan Privasi Alumni</h1>
 
-        <div class="tmbh">
+        <div class="actions">
             <a href="{{ route('status-alumni.create') }}" class="btn btn-primary">Tambah Status</a>
         </div>
 
@@ -60,20 +58,29 @@
                     <tr>
                         <th>ID</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($statuses as $status)
-                        <tr>
-                            <td>{{ $status->id_status_alumni }}</td>
-                            <td>{{ $status->status }}</td>
-                            <td>
-                                <a href="{{ route('status-alumni.edit', $status->id_status_alumni) }}" class="btn btn-warning">Edit</a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
+    @foreach ($statuses as $status)
+    <tr>
+        <td>{{ $status->id_status_alumni }}</td>
+        <td>{{ $status->status }}</td>
+        <td>
+            <!-- Tombol Edit -->
+            <a href="{{ route('status-alumni.edit', $status->id_status_alumni) }}" class="btn btn-warning">Edit</a>
+            
+            <!-- Tombol Hapus -->
+            <form action="{{ route('status-alumni.destroy', $status->id_status_alumni) }}" method="POST" style="display: inline-block;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus status ini?')">Hapus</button>
+            </form>
+        </td>
+    </tr>
+    @endforeach
+</tbody>
+
             </table>
         </div>
     </div>
@@ -84,10 +91,10 @@
             <p>Copyright © 2024-2027 Akbar. Hak Cipta. All rights reserved.</p>
             <div class="social-icons">
                 <a href="#" class="social-icon">
-                    <img src="{{ asset('images/tk.png') }}" alt="Logo">
+                    <img src="{{ asset('images/tk.png') }}" alt="Telegram">
                 </a>
                 <a href="#" class="social-icon">
-                    <img src="{{ asset('images/ig.jfif') }}" alt="Logo">
+                    <img src="{{ asset('images/ig.jfif') }}" alt="Instagram">
                 </a>
             </div>
         </div>
@@ -95,4 +102,5 @@
 
     <script src="{{ asset('js/admin.js') }}"></script>
 </body>
+
 </html>

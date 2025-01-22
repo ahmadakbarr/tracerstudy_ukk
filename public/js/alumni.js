@@ -3,6 +3,63 @@ document.getElementById('burgerMenu').addEventListener('click', function () {
     const dropdown = document.getElementById('dropdownMenu');
     dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
   });
+
+  // diagram
+  // Data untuk Tracer Chart
+const tracerChart = document.getElementById('tracerChart').getContext('2d');
+new Chart(tracerChart, {
+    type: 'pie', // Mengubah jenis diagram menjadi Pie
+    data: {
+        labels: ['Bekerja', 'Kuliah', 'Menganggur', 'Lainnya'], // Label kategori
+        datasets: [{
+            data: [300, 200, 50, 50], // Data jumlah alumni
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'], // Warna setiap bagian
+            hoverOffset: 4 // Efek hover
+        }]
+    },
+    options: {
+        plugins: {
+            legend: {
+                display: true,
+                position: 'right', // Letak legenda
+            }
+        }
+    }
+});
+
+// Data untuk Tracer Kerja Chart
+const tracerChartKerja = document.getElementById('tracerChart-kerja').getContext('2d');
+new Chart(tracerChartKerja, {
+    type: 'bar', // Diagram batang
+    data: {
+        labels: ['Teknik', 'Kesehatan', 'Ekonomi', 'Pendidikan'], // Label kategori pekerjaan
+        datasets: [{
+            label: 'Jumlah Alumni',
+            data: [100, 150, 200, 150], // Data pekerjaan alumni
+            backgroundColor: ['#4BC0C0', '#FF6384', '#36A2EB', '#FFCE56'], // Warna batang
+            borderColor: '#ccc', // Warna border batang
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top' // Letak legenda
+            }
+        },
+        scales: {
+            x: {
+                beginAtZero: true
+            },
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
   
   // Optional: Close menu when clicking outside
   document.addEventListener('click', function (event) {

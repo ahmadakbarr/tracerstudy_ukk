@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,42 +8,39 @@
     <link rel="stylesheet" href="{{ asset('css/tahun.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nav_admin.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            flex-direction: column;
+            display: flex;
+            min-height: 100vh;
+            /* Minimum tinggi layar */
+            margin: 0;
+            /* Hilangkan margin bawaan */
+        }
+    </style>
 </head>
+
 <body>
 
     <!-- Navigation Bar -->
-    <nav>
-        <div class="profile">
-            <div class="logo">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo">
-            </div>
-            <div class="Username">
-                {{ Auth::user()->name }}
-            </div>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+            <p class="username">Welcome, {{ Auth::user()->name }}</p>
         </div>
-        <div class="menu">
-            <button onclick="window.location='{{ route('admin.dashboard') }}';">Home</button>
-            <button onclick="window.location='{{ route('admin.alumni.index') }}';">Data Alumni</button>
-            <button onclick="window.location='{{ route('admin.TracerKuliah.index') }}';">Tracer Kuliah</button>
-            <button onclick="window.location='{{ route('admin.TracerKerja.index') }}';">Tracer Kerja</button>
+        <nav class="menu">
+            <a href="{{ route('admin.dashboard') }}" class="menu-item">Dashboard</a>
+            <a href="{{ route('admin.alumni.index') }}" class="menu-item">Alumni Data</a>
+            <a href="{{ route('admin.TracerKuliah.index') }}" class="menu-item">Tracer Kuliah</a>
+            <a href="{{ route('admin.TracerKerja.index') }}" class="menu-item">Tracer Kerja</a>
+        </nav>
+        <div class="sidebar-footer">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="logout-btn">Logout</button>
+            </form>
         </div>
-        <div class="menu_dropdown">
-            <button class="burger-icon" id="burgerMenu">
-                <img src="{{ asset('icons/dropdown.png') }}" alt="Icons">
-            </button>
-            <ul class="dropdown" id="dropdownMenu">
-                <button onclick="window.location='{{ route('login') }}';" class="dropdown-icon">
-                    <img src="{{ asset('icons/dropdown.png') }}" alt="Icons">
-                </button>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
-                    @csrf
-                    <button type="submit" class="dropdown-icon">
-                        <img src="{{ asset('icons/logout.png') }}" alt="Logout Icon">
-                    </button>
-                </form>
-            </ul>
-        </div>
-    </nav>
+    </aside>
 
     <!-- Main Content -->
     <div class="container">
@@ -70,7 +68,8 @@
                             <td>{{ $tahun->tahun_lulus }}</td>
                             <td>{{ $tahun->keterangan }}</td>
                             <td>
-                                <a href="{{ route('tahun-lulus.edit', $tahun->id_tahun_lulus) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ route('tahun-lulus.edit', $tahun->id_tahun_lulus) }}"
+                                    class="btn btn-warning">Edit</a>
                             </td>
                         </tr>
                     @endforeach
@@ -78,6 +77,7 @@
             </table>
         </div>
     </div>
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -93,7 +93,7 @@
             </div>
         </div>
     </footer>
-
     <script src="{{ asset('js/admin.js') }}"></script>
 </body>
+
 </html>

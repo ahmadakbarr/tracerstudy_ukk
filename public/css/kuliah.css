@@ -99,3 +99,10 @@
 .container .table-actions .btn {
     margin-right: 10px;
 }
+.sidebar {
+    width: 100px;
+}
+
+.main-content {
+    margin-left: 280px;
+}

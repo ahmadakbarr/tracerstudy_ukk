@@ -139,32 +139,7 @@ nav .menu button:hover {
     background-color: #c0392b;
 }
 
-/* Footer */
-.footer {
-    background-color: #34495e;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
 
-.footer .social-icons {
-    margin-top: 10px;
-}
-
-.footer .social-icons a {
-    margin: 0 5px;
-    display: inline-block;
-}
-
-.footer .social-icons img {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.2s;
-}
-
-.footer .social-icons img:hover {
-    transform: scale(1.1);
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -380,4 +355,11 @@ textarea {
         font-size: 14px;
         padding: 10px;
     }
+}
+.sidebar {
+    width: 100px;
+}
+
+.main-content {
+    margin-left: 280px;
 }

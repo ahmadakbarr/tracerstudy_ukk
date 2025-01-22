@@ -7,54 +7,47 @@
     <title>Halaman Admin</title>
     <link rel="stylesheet" href="{{ asset('css/adminalumni.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nav_admin.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin_styles.css') }}">
+    <style>
+         body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 800px;
+            flex-direction: column;
+            display: flex;
+            background-color: #f4f7fa;
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <nav>
-        <div class="profile">
-            <div class="logo">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo">
-            </div>
-            <div class="Username">
-                {{ Auth::user()->name }}
-            </div>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+            <p class="username">Welcome, {{ Auth::user()->name }}</p>
         </div>
-        <div class="menu">
-            <div class="menu-item">
-                <button onclick="window.location='{{ route('admin.dashboard') }}';">Home</button>
-            </div>
-            <div class="menu-item">
-                <button onclick="window.location='{{ route('admin.alumni.index') }}';">Data Alumni</button>
-            </div>
-            <div class="menu-item">
-                <button onclick="window.location='{{ route('admin.TracerKuliah.index') }}';">Tracer Kuliah</button>
-            </div>
-            <div class="menu-item">
-                <button onclick="window.location='{{ route('admin.TracerKerja.index') }}';">Tracer Kerja</button>
-            </div>
+        <nav class="menu">
+            <a href="{{ route('admin.dashboard') }}" class="menu-item">Dashboard</a>
+            <a href="{{ route('admin.alumni.index') }}" class="menu-item">Data Alumni</a>
+            <a href="{{ route('admin.TracerKuliah.index') }}" class="menu-item">Tracer Kuliah</a>
+            <a href="{{ route('admin.TracerKerja.index') }}" class="menu-item">Tracer Kerja</a>
+        </nav>
+        <div class="sidebar-footer">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="logout-btn">Logout</button>
+            </form>
         </div>
-        <div class="menu_dropdown">
-            <button class="burger-icon" id="burgerMenu">
-                <img src="{{ asset('icons/dropdown.png') }}" alt="Icons">
-            </button>
-            <ul class="dropdown" id="dropdownMenu">
-                <button onclick="window.location='{{ route('login') }}';" class="dropdown-icon">
-                    <img src="{{ asset('icons/dropdown.png') }}" alt="Icons">
-                </button>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
-                    @csrf
-                    <button type="submit" class="dropdown-icon">
-                        <img src="{{ asset('icons/logout.png') }}" alt="Logout Icon">
-                    </button>
-                </form>
-            </ul>
-        </div>
-    </nav>
+    </aside>
 
-    <div class="container">
-        <h2>Data Alumni</h2>
+    <!-- Main Content -->
+    <main class="main-content">
+        <header>
+            <h2>Data Alumni</h2>
+        </header>
+
         <table class="table">
             <thead>
                 <tr>
@@ -88,7 +81,7 @@
                     <td>{{ $alum->email }}</td>
                     <td>
                         <a href="{{ route('alumni.show', $alum->id_alumni) }}" class="btn btn-primary">Detail</a>
-                        <form action="{{ route('alumni.destroy', $alum->id_alumni) }}" method="POST">
+                        <form action="{{ route('alumni.destroy', $alum->id_alumni) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Hapus</button>
@@ -98,8 +91,9 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
+    </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <p>Copyright © 2024-2027 Akbar. Hak Cipta. All rights reserved.</p>

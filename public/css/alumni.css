@@ -1,11 +1,19 @@
-/* General Body Styling */
-body {
-    font-family: Arial, sans-serif;
+/* Reset Default Styles */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    box-sizing: border-box;
 }
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 800px;
+    flex-direction: column;
+    display: flex;
+    background-color: #f4f7fa;
+ }
+
 
 h2, h3 {
     color: #333;
@@ -15,9 +23,49 @@ h3 span {
     color: #0066cc;
 }
 
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #2f3640;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.navbar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-section {
+    text-align: center;
+}
+
+.menu-container {
+    margin-top: 40px;
+}
+
+.menu-container button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #3b3f45;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+}
+
+.menu-container button:hover {
+    background-color: #1abc9c;
+}
 /* Main Container Styling */
 .main-container {
-    padding: 20px;
+   margin-left: 280px;
+   height: 100%;
 }
 
 /* Welcome Section Styling */

@@ -1,111 +1,160 @@
-/* Navbar Styling */
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
+/* Sidebar Styles */
+.sidebar {
+    position: fixed; /* Posisi tetap di layar */
+    top: 0; /* Mulai dari bagian atas halaman */
+    left: 0; /* Mulai dari bagian kiri halaman */
+    height: 100vh; /* Tinggi penuh layar */
+    width: 240px; /* Lebar sidebar */
+    background-color: #2c3e50; /* Warna latar sidebar */
+    color: white; /* Warna teks di sidebar */
+    display: flex; /* Gunakan flexbox untuk tata letak */
+    flex-direction: column; /* Arahkan elemen ke kolom */
+    justify-content: space-between; /* Jarak antar elemen diatur agar ada ruang */
+    padding: 20px 0; /* Jarak dalam atas dan bawah */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Efek bayangan di sisi kanan sidebar */
 }
 
-.logo-section {
-    display: flex;
-    align-items: center;
+.sidebar-header {
+    text-align: center; /* Pusatkan elemen dalam header sidebar */
+    padding: 10px 20px; /* Jarak dalam header sidebar */
 }
 
-.logo {
-    width: 50px;
-    height: auto;
+.sidebar-header .logo {
+    max-width: 100px; /* Lebar maksimum logo */
+    margin-bottom: 10px; /* Jarak bawah logo */
 }
 
-.username {
-    margin-left: 10px;
-    color: white;
-    font-weight: bold;
+.sidebar-header .username {
+    font-size: 18px; /* Ukuran teks username */
+    font-weight: bold; /* Teks tebal untuk username */
 }
 
-.menu-container {
-    display: flex;
+/* Menu Styles */
+.menu {
+    display: flex; /* Gunakan flexbox */
+    flex-direction: column; /* Atur elemen menu secara vertikal */
+    margin-top: 30px; /* Jarak atas menu dari header */
 }
 
-.menu-container button {
-    background-color: #444;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: 0 5px;
-    font-size: 14px;
+.menu-item {
+    padding: 15px 20px; /* Jarak dalam setiap item menu */
+    font-size: 16px; /* Ukuran teks item menu */
+    color: white; /* Warna teks menu */
+    transition: background-color 0.3s; /* Efek transisi saat hover */
+    text-align: left; /* Teks rata kiri */
+    border: none; /* Hilangkan border pada tombol */
+    background-color: transparent; /* Background transparan */
 }
 
-.menu-container button:hover {
-    background-color: #666;
+.menu-item:hover {
+    background-color: #34495e; /* Ubah warna latar saat hover */
 }
 
-.dropdown-container {
-    position: relative;
+.menu-item a {
+    color: white; /* Warna teks tautan */
+    text-decoration: none; /* Hilangkan garis bawah pada tautan */
 }
-
-.burger-icon {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: 40px;
-    right: 0;
-    background-color: #444;
-    list-style: none;
-    padding: 10px;
-    display: none;
-}
-
-.dropdown-menu.active {
-    display: block;
-}
-
-.dropdown-item {
-    background-color: #555;
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    cursor: pointer;
-    width: 100%;
-}
-
-.dropdown-item img {
-    margin-right: 10px;
-}
-
-.dropdown-item:hover {
-    background-color: #777;
-}
-
-/* Footer Styling */
-.footer {
-    background-color: #333;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-}
-
-.footer-content {
+/* Sidebar Footer Styling */
+.sidebar-footer {
+    margin-top: auto; /* Memastikan footer berada di bawah */
+    padding: 20px 20px 10px; /* Memberikan padding yang baik */
+    background-color: #34495e; /* Latar belakang sedikit lebih terang dari sidebar */
+    border-radius: 10px 10px 0 0; /* Menambahkan sudut membulat pada bagian atas footer */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Membuat tombol pusat di footer */
+    gap: 15px; /* Jarak antar elemen dalam footer */
+}
+
+/* Tombol Profile */
+.sidebar-footer button {
+    display: flex; /* Menggunakan flexbox untuk ikon dan teks */
+    align-items: center; /* Menyusun ikon dan teks di tengah */
+    background-color: transparent; /* Menghilangkan latar belakang tombol */
+    border: none; /* Menghilangkan border */
+    color: white; /* Warna teks putih */
+    font-size: 16px; /* Ukuran font */
+    font-weight: 500; /* Menambah ketebalan font */
+    cursor: pointer; /* Menambahkan kursor pointer */
+    padding: 10px 20px; /* Memberikan ruang di dalam tombol */
+    border-radius: 5px; /* Sudut tombol membulat */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animasi transisi */
+}
+
+.sidebar-footer button:hover {
+    background-color: #2980b9; /* Efek hover pada tombol Profile */
+    color: #ecf0f1; /* Mengubah warna teks saat hover */
+}
+
+.sidebar-footer .icon {
+    width: 20px; /* Menetapkan ukuran ikon */
+    height: 20px; /* Menetapkan ukuran ikon */
+    margin-right: 10px; /* Jarak antara ikon dan teks */
+    transition: transform 0.2s ease; /* Efek transformasi ikon */
+}
+
+.sidebar-footer button:hover .icon {
+    transform: scale(1.2); /* Memperbesar ikon sedikit saat hover */
+}
+
+/* Tombol Logout */
+.logout-btn {
+    display: flex; /* Flexbox untuk tombol logout */
+    align-items: center; /* Menyusun ikon dan teks di tengah */
+    padding: 12px 25px; /* Memberikan padding untuk tombol logout */
+    background-color: #e74c3c; /* Warna latar belakang merah */
+    color: white; /* Warna teks putih */
+    font-size: 16px; /* Ukuran font */
+    font-weight: 500; /* Ketebalan font */
+    border-radius: 5px; /* Sudut tombol membulat */
+    border: none; /* Menghilangkan border */
+    cursor: pointer; /* Kursor pointer */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Efek transisi */
+}
+
+.logout-btn:hover {
+    background-color: #c0392b; /* Ubah warna latar belakang saat hover */
+    transform: scale(1.05); /* Memberikan efek sedikit memperbesar tombol saat hover */
+}
+
+.logout-btn .icon {
+    width: 20px; /* Ukuran ikon logout */
+    height: 20px; /* Ukuran ikon logout */
+    margin-right: 10px; /* Jarak antara ikon dan teks */
+    transition: transform 0.2s ease; /* Efek transformasi ikon */
+}
+
+.logout-btn:hover .icon {
+    transform: scale(1.2); /* Memperbesar ikon logout sedikit saat hover */
+}
+
+/* footer */
+footer {
+    text-align: center; /* Pusatkan teks di dalam footer */
+    padding: 20px; /* Jarak dalam */
+    background-color: #2c3e50; /* Warna latar belakang footer */
+    color: white; /* Warna teks */
+    margin-top: auto; /* Jarak atas footer */
+}
+footer p {
+    margin: 0; /* Hapus margin bawaan pada paragraf dalam footer */
 }
 
 .social-icons {
-    display: flex;
-    margin-top: 10px;
+    margin-top: 10px; /* Jarak atas untuk ikon sosial */
 }
 
-.social-icon {
-    margin: 0 10px;
+.social-icons a {
+    margin: 0 5px; /* Jarak antar ikon sosial */
+    display: inline-block; /* Agar ikon sejajar horizontal */
+    transition: transform 0.2s; /* Efek animasi saat hover */
 }
 
-.social-icon img {
-    width: 24px;
-    height: 24px;
+.social-icons a:hover {
+    transform: scale(1.1); /* Memperbesar ikon sedikit saat hover */
+}
+
+.social-icons img {
+    width: 24px; /* Lebar ikon sosial */
+    height: 24px; /* Tinggi ikon sosial */
 }

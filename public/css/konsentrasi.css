@@ -1,213 +1,214 @@
-/* admin_dashboard.css */
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+:root {
+    --text-color: #000000;
+    --bg-input-color: #50b247;
+    --bg-input-2-color: #70BFFF;
+    --bg-1-color: #2c2c31;
+    --bg-2-color: #ffffff;
+    --alert-btn-color: #DC060F;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #007bff;
-    padding: 10px 20px;
-    color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.navbar .profile {
-    display: flex;
-    align-items: center;
-}
-
-.navbar .logo img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-.navbar .username {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.navbar .menu button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 16px;
-    margin: 0 10px;
-    cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 4px;
-    transition: background 0.3s;
-}
-
-.navbar .menu button:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.menu-dropdown {
-    position: relative;
-}
-
-.menu-dropdown .burger-icon img {
-    width: 25px;
-    cursor: pointer;
-}
-
-.dropdown {
-    display: none;
-    position: absolute;
-    right: 0;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-top: 10px;
-    z-index: 10;
-}
-
-.dropdown li {
-    list-style: none;
-}
-
-.dropdown button {
-    background: none;
-    border: none;
-    color: #333;
-    text-align: left;
-    width: 100%;
-    padding: 10px 15px;
-    cursor: pointer;
-}
-
-.dropdown button:hover {
-    background-color: #f2f2f2;
-}
-
+/* General container styles */
 .container {
-    flex: 1;
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
     margin-top: 20px;
+    background: #f0f8ff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.title {
-    font-size: 24px;
-    color: #007bff;
-    margin-bottom: 20px;
+h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--bg-1-color);
+    margin-top: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.actions {
-    display: flex;
-    justify-content: flex-end;
+/* Tambah button container */
+.tmbh {
+    display: flex; /* Mengaktifkan Flexbox */
+    justify-content: flex-end; /* Mengatur tombol ke kanan */
+    margin-right: 20px; /* Menambahkan jarak dari sisi kanan */
     margin-bottom: 10px;
 }
 
-.actions .btn-add {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: background 0.3s;
+.tmbh a {
+    border: #000000 solid 2px;
+    border-radius: 15px;
+    background-color: var(--bg-input-color);
+    color: var(--bg-2-color);
+    text-align: center;
+    padding: 10px 20px; /* Ukuran tombol */
+    text-decoration: none; /* Menghilangkan garis bawah */
+    font-weight: bold; /* Membuat teks lebih tebal */
+    transition: background-color 0.3s ease; /* Efek hover */
 }
 
-.actions .btn-add:hover {
-    background-color: #218838;
+.tmbh a:hover {
+    background-color: var(--bg-1-color); /* Warna tombol saat hover */
+    color: var(--bg-2-color); /* Warna teks saat hover */
 }
 
-.table {
+/* Table styles */
+table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    background-color: #fff;
 }
 
-.table thead {
-    background-color: #007bff;
-    color: white;
+table thead {
+    background-color: var(--bg-1-color);
+    color: #fff;
 }
 
-.table th, .table td {
+table th, table td {
+    padding: 12px;
+    text-align: center;
     border: 1px solid #ddd;
-    text-align: left;
-    padding: 10px;
 }
 
-.table tr:nth-child(even) {
-    background-color: #f9f9f9;
+table tbody tr:nth-child(even) {
+    background: #f9f9f9;
 }
 
-.table tr:hover {
-    background-color: #f1f1f1;
+table tbody tr:hover {
+    background: #ffebf0;
 }
 
+/* Button styles */
+/* Button styles */
 .btn {
-    padding: 8px 12px;
-    font-size: 14px;
-    text-decoration: none;
-    border-radius: 4px;
-    color: white;
-    transition: background 0.3s;
+    text-transform: uppercase;
+    border-radius: 8px; /* Membuat sudut tombol lebih membulat */
+    font-weight: bold;
+    padding: 10px 20px; /* Memberikan ruang lebih untuk ukuran tombol */
+    font-size: 14px; /* Ukuran teks yang lebih proporsional */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Memberikan transisi halus untuk efek hover */
+    color: #0069f3; /* Warna teks default */
+    display: inline-block; /* Membuat tombol tidak mengambil satu baris penuh */
 }
 
+/* Success Button */
+.btn-success {
+    background-color: var(--bg-input-color);
+    border: 1px solid #4e9a2a; /* Memberikan border halus */
+}
+
+.btn-success:hover {
+    background-color: var(--bg-1-color); /* Warna tombol saat hover */
+}
+
+/* Primary Button */
 .btn-primary {
-    background-color: #007bff;
+    background-color: var(--bg-input-color);
+    border: 1px solid #3e91ed; /* Memberikan border halus */
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: var(--bg-1-color); /* Warna tombol saat hover */
 }
 
+/* Danger Button */
 .btn-danger {
-    background-color: #dc3545;
+    background-color: var(--alert-btn-color);
+    border: 1px solid #c1050d; /* Memberikan border halus */
 }
 
 .btn-danger:hover {
-    background-color: #c82333;
+    background-color: #a1030b; /* Warna lebih gelap saat hover */
 }
 
-.footer {
-    background-color: #007bff;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: auto;
+/* Hover and Active Effects */
+.btn:hover {
+    opacity: 0.95;
+    transform: scale(1.05); /* Memberikan efek membesar sedikit */
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: auto;
+.btn:active {
+    transform: scale(0.98); /* Memberikan efek sedikit mengecil saat ditekan */
+    transition: transform 0.1s ease; /* Perubahan cepat untuk animasi active */
 }
-
-.footer-content p {
-    margin: 0;
+a{
+    text-decoration: none;
+}
+.form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
     font-size: 14px;
 }
 
-.footer-content .social-icons {
-    display: flex;
+
+
+.form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: var(--bg-2-color);
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.footer-content .social-icon {
-    margin: 0 5px;
+.form button:hover {
+    background-color: #45a049;
 }
 
-.footer-content .social-icon img {
-    width: 25px;
-    height: 25px;
+.form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+.form {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.sidebar {
+    width: 100px;
+}
+
+.main-content {
+    margin-left: 240px;
+}   
+
+/* Styling untuk tombol 'Tambah Konsentrasi Keahlian' */
+.actions .btn-add {
+    display: inline-block; /* Membuat tombol tampil sebagai elemen blok baris */
+    padding: 12px 25px; /* Memberikan padding dalam tombol untuk ruang teks */
+    background-color: #2ecc71; /* Warna latar belakang hijau cerah */
+    color: white; /* Warna teks putih */
+    font-size: 16px; /* Ukuran teks tombol */
+    font-weight: bold; /* Membuat teks menjadi tebal */
+    border-radius: 5px; /* Sudut tombol membulat */
+    border: none; /* Menghilangkan border tombol */
+    text-align: center; /* Pusatkan teks di dalam tombol */
+    text-decoration: none; /* Menghilangkan garis bawah pada link */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Efek transisi untuk hover */
+    cursor: pointer; /* Menambahkan pointer saat kursor di atas tombol */
+}
+
+/* Efek saat hover pada tombol */
+.actions .btn-add:hover {
+    background-color: #27ae60; /* Warna latar belakang berubah menjadi hijau sedikit lebih gelap */
+    transform: scale(1.05); /* Memperbesar tombol sedikit saat hover */
+}
+
+/* Efek saat fokus pada tombol (misalnya saat tombol dipilih) */
+.actions .btn-add:focus {
+    outline: none; /* Menghilangkan outline default saat fokus */
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.7); /* Menambahkan bayangan efek fokus */
 }

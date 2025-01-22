@@ -29,6 +29,19 @@ class StatusAlumniController extends Controller
         return redirect()->route('status-alumni.index')->with('success', 'Status Alumni created successfully.');
     }
 
+    public function destroy($id)
+{
+    // Cari data berdasarkan ID
+    $status = StatusAlumni::findOrFail($id);
+
+    // Hapus data
+    $status->delete();
+
+    // Redirect kembali dengan pesan sukses
+    return redirect()->route('status-alumni.index')->with('success', 'Status berhasil dihapus.');
+}
+
+
     public function edit(StatusAlumni $status_alumni)
     {
         return view('admin.status-alumni.edit', compact('status_alumni'));

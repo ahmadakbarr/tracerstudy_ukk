@@ -40,6 +40,10 @@
                 <li><button onclick="window.location='{{ route('login') }}';">Tracer Kerja</button></li>
             </ul>
         </div>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="logout-btn">Logout</button>
+            </form>
     </nav>
 
     <!-- Top Content Section -->

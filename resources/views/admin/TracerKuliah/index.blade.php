@@ -21,47 +21,27 @@
 
 <body>
 
-    <nav>
-        <div class="profile">
-            <div class="logo">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo">
-            </div>
-            <div class="Username">
-                {{ Auth::user()->name }}
-            </div>
+<aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+            <p class="username">Welcome, {{ Auth::user()->name }}</p>
         </div>
-        <div class="menu">
-            <div class="menu-item">
-                <button onclick="window.location='{{ route('admin.dashboard') }}';">Home</button>
-            </div>
-            <div class="menu-item">
-                <button onclick="window.location='{{ route('admin.alumni.index') }}';">Data Alumni</button>
-            </div>
-            <div class="menu-item">
-                <button onclick="window.location='{{ route('admin.TracerKuliah.index') }}';">Tracer Kuliah</button>
-            </div>
-            <div class="menu-item">
-                <button onclick="window.location='{{ route('admin.TracerKerja.index') }}';">Tracer Kerja</button>
-            </div>
+        <nav class="menu">
+            <a href="{{ route('admin.dashboard') }}" class="menu-item">Dashboard</a>
+            <a href="{{ route('admin.alumni.index') }}" class="menu-item">Alumni Data</a>
+            <a href="{{ route('admin.TracerKuliah.index') }}" class="menu-item">Tracer Kuliah</a>
+            <a href="{{ route('admin.TracerKerja.index') }}" class="menu-item">Tracer Kerja</a>
+        </nav>
+        <div class="sidebar-footer">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="logout-btn">Logout</button>
+            </form>
         </div>
-        <div class="menu_dropdown">
-            <button class="burger-icon" id="burgerMenu">
-                <img src="{{ asset('icons/dropdown.png') }}" alt="Icons">
-            </button>
-            <ul class="dropdown" id="dropdownMenu">
-                <button onclick="window.location='{{ route('login') }}';" class="dropdown-icon">
-                    <img src="{{ asset('icons/dropdown.png') }}" alt="Icons">
-                </button>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
-                    @csrf
-                    <button type="submit" class="dropdown-icon">
-                        <img src="{{ asset('icons/logout.png') }}" alt="Logout Icon">
-                    </button>
-                </form>
-            </ul>
-        </div>
-    </nav>
-    <div class="container">
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
         <h2>Data Tracer Kuliah</h2>
         <table class="table">
             <thead>
@@ -99,21 +79,20 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-    <script src="{{ asset('js/admin.js') }}"></script>
+    </main>
+
     <footer class="footer">
-        <div class="footer-content">
-            <p>Copyright © 2024-2027 Akbar. Hak Cipta. All rights reserved.</p>
-            <div class="social-icons">
-                <a href="#" class="social-icon-1">
-                    <img src="{{ asset('images/tk.png') }}" alt="Logo">
-                </a>
-                <a href="#" class="social-icon">
-                    <img src="{{ asset('images/ig.jfif') }}" alt="Logo">
-                </a>
-            </div>
+        <p>Copyright © 2024-2027 Akbar. Hak Cipta. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon-1">
+                <img src="{{ asset('images/tk.png') }}" alt="Logo">
+            </a>
+            <a href="#" class="social-icon">
+                <img src="{{ asset('images/ig.jfif') }}" alt="Logo">
+            </a>
         </div>
     </footer>
+
 </body>
 
 </html>

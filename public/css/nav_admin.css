@@ -1,200 +1,98 @@
-:root {
-    --text-color: #000000;
-    --bg-input-color: #4782B2;
-    --bg-input-2-color: #70BFFF;
-    --bg-1-color: #1A2189;
-    --bg-2-color: #FFFFFF;
-    --alert-btn-color: #DC060F;
-}
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-
-}
-
-nav {
-    background-color: var(--bg-1-color);
-    width: 100%;
-    height: 70px;
-    display: flex;
-    align-items: space-between;
-    flex-wrap: wrap;
+/* aside */
+/* Sidebar Styles */
+.sidebar {
+    position: fixed; /* Posisi tetap di layar */
+    top: 0; /* Mulai dari bagian atas halaman */
+    left: 0; /* Mulai dari bagian kiri halaman */
+    height: 100vh; /* Tinggi penuh layar */
+    width: 240px; /* Lebar sidebar */
+    background-color: #2c3e50; /* Warna latar sidebar */
+    color: white; /* Warna teks di sidebar */
+    display: flex; /* Gunakan flexbox untuk tata letak */
+    flex-direction: column; /* Arahkan elemen ke kolom */
+    justify-content: space-between; /* Jarak antar elemen diatur agar ada ruang */
+    padding: 20px 0; /* Jarak dalam atas dan bawah */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Efek bayangan di sisi kanan sidebar */
 }
 
-.profile {
-    display: flex;
-    width: 200px;
-    margin-left: 20px;
-
+.sidebar-header {
+    text-align: center; /* Pusatkan elemen dalam header sidebar */
+    padding: 10px 20px; /* Jarak dalam header sidebar */
 }
 
-.profile .logo {
-    margin-top: 5px;
-    height: 70px;
-    width: 70px;
-    /* background-color: #fff; */
+.sidebar-header .logo {
+    max-width: 100px; /* Lebar maksimum logo */
+    margin-bottom: 10px; /* Jarak bawah logo */
 }
 
-.profile .logo img {
-    height: 50px;
-    width: 50px;
-    margin-top: 6px;
-    margin-left: 18px;
-}
-
-.profile .Username {
-    margin-top: 23px;
-    margin-left: 15px;
-    /* Jarak antara logo dan username */
-    font-size: 16px;
-    /* Ukuran teks */
-    font-weight: bold;
-    /* Teks lebih tebal */
-    color: var(--bg-2-color);
-    /* Warna teks */
-    background-color: var(--text-color);
-    border: var(--bg-2-color) solid 2px;
-    width: 100%;
-    height: 40%;
-    text-align: center;
-    padding-top: 5px;
-    border-radius: 15px;
-    overflow: hidden;
-    /* Sembunyikan teks berlebih */
-    text-overflow: ellipsis;
-    /* Tambahkan "..." jika teks terlalu panjang */
-    white-space: nowrap;
-    /* Pastikan teks tidak memotong baris */
+.sidebar-header .username {
+    font-size: 18px; /* Ukuran teks username */
+    font-weight: bold; /* Teks tebal untuk username */
 }
 
 .menu {
-    width: 700px;
-    /* background-color: #fff; */
-    margin-left: 330px;
-    display: flex;
-    align-items: center;
-    align-content: space-between;
+    display: flex; /* Gunakan flexbox */
+    flex-direction: column; /* Atur elemen menu secara vertikal */
+    margin-top: 30px; /* Jarak atas menu dari header */
 }
 
-.menu .menu-item {
-    margin-left: 50px;
+.menu-item {
+    padding: 15px 20px; /* Jarak dalam setiap item menu */
+    font-size: 16px; /* Ukuran teks item menu */
+    color: white; /* Warna teks menu */
+    transition: background-color 0.3s; /* Efek transisi saat hover */
 }
 
-.menu-item button {
-    border: none;
-    height: 50px;
-    width: 100px;
-    background-color: transparent;
-    font-size: 15px;
-    font-weight: bold;
-    color: var(--bg-2-color);
-    opacity: 80%;
+.menu-item:hover {
+    background-color: #34495e; /* Ubah warna latar saat hover */
 }
 
-.menu-item button:hover {
-    border: none;
-    height: 50px;
-    width: 100px;
-    background-color: var(--bg-input-color);
-    font-size: 15px;
-    font-weight: bold;
-    color: var(--bg-2-color);
-    opacity: 100%;
-    border-radius: 15px;
+.sidebar-footer {
+    text-align: center; /* Pusatkan elemen dalam footer sidebar */
+    padding: 10px 20px; /* Jarak dalam footer sidebar */
 }
 
-.menu_dropdown {
-    width: 80px;
-    height: 70px;
-    /* background-color:red; */
-    margin-left: 15px;
-    position: relative;
-    align-items: center;
-    align-content: center;
+.logout-btn {
+    padding: 10px 20px; /* Jarak dalam tombol logout */
+    background-color: #e74c3c; /* Warna tombol logout */
+    color: white; /* Warna teks tombol logout */
+    border-radius: 5px; /* Sudut tombol membulat */
+    transition: background-color 0.3s; /* Efek transisi saat hover */
 }
 
-.menu_dropdown img {
-    width: 25px;
-    height: 25px;
-}
-
-.menu_dropdown .dropdown {
-    background-color: var(--bg-input-color);
-    width: 80px;
-    height: 120px;
-    margin: 2px;
-    align-content: center;
-    align-items: center;
-    border-radius: 15px;
-}
-
-.dropdown .dropdown-icon {
-    width: 40px;
-    height: 40px;
-    margin: 10px;
-    margin-left: 20px;
-}
-.dropdown-icon img{
-    margin-left: -05px;
-    margin-bottom: 4px;
-}
-
-#dropdownMenu {
-    display: none;
-}
-
-.menu_dropdown .burger-icon {
-    margin: 20px 0px 0px 20px;
-    height: 40px;
-    width: 40px;
-}
-.burger-icon img{
-    margin-left: -05px;
-    margin-bottom: 4px;
+.logout-btn:hover {
+    background-color: #c0392b; /* Ubah warna latar saat hover */
 }
 
 
-/* Footer styling */
-.footer {
-    background-color: #1a237e;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    margin-top: auto;
-    border-top: 3px solid #1976d2;
+/* footer */
+footer {
+    text-align: center; /* Pusatkan teks di dalam footer */
+    padding: 20px; /* Jarak dalam */
+    background-color: #2c3e50; /* Warna latar belakang footer */
+    color: white; /* Warna teks */
+    margin-top: auto; /* Jarak atas footer */
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.footer-content p {
-    margin: 0;
-    font-size: 14px;
-    font-family: Arial, sans-serif;
+footer p {
+    margin: 0; /* Hapus margin bawaan pada paragraf dalam footer */
 }
 
 .social-icons {
-    display: flex;
-    gap: 10px;
+    margin-top: 10px; /* Jarak atas untuk ikon sosial */
 }
 
-.social-icon img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+.social-icons a {
+    margin: 0 5px; /* Jarak antar ikon sosial */
+    display: inline-block; /* Agar ikon sejajar horizontal */
+    transition: transform 0.2s; /* Efek animasi saat hover */
 }
 
-.social-icon-1 img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-size: auto;
+.social-icons a:hover {
+    transform: scale(1.1); /* Memperbesar ikon sedikit saat hover */
+}
+
+.social-icons img {
+    width: 24px; /* Lebar ikon sosial */
+    height: 24px; /* Tinggi ikon sosial */
 }

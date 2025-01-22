@@ -157,3 +157,10 @@ footer {
 .social-icons img:hover {
     transform: scale(1.1);
 }
+.sidebar {
+    width: 100px;
+}
+
+.main-content {
+    margin-left: 280px;
+}

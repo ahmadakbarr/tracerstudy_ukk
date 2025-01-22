@@ -7,27 +7,30 @@
     <title>Data Tracer Kerja</title>
     <link rel="stylesheet" href="{{ asset('css/kerja.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/nav_admin.css') }}">
 </head>
 
 <body>
 
     <!-- Navigation Bar -->
-    <nav>
-        <div class="profile">
-            <div class="logo">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo">
-            </div>
-            <div class="Username">
-                {{ Auth::user()->name }}
-            </div>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+            <p class="username">Welcome, {{ Auth::user()->name }}</p>
         </div>
-        <div class="menu">
-            <button onclick="window.location='{{ route('admin.dashboard') }}';">Home</button>
-            <button onclick="window.location='{{ route('admin.alumni.index') }}';">Data Alumni</button>
-            <button onclick="window.location='{{ route('admin.TracerKuliah.index') }}';">Tracer Kuliah</button>
-            <button onclick="window.location='{{ route('admin.TracerKerja.index') }}';">Tracer Kerja</button>
+        <nav class="menu">
+            <a href="{{ route('admin.dashboard') }}" class="menu-item">Dashboard</a>
+            <a href="{{ route('admin.alumni.index') }}" class="menu-item">Alumni Data</a>
+            <a href="{{ route('admin.TracerKuliah.index') }}" class="menu-item">Tracer Kuliah</a>
+            <a href="{{ route('admin.TracerKerja.index') }}" class="menu-item">Tracer Kerja</a>
+        </nav>
+        <div class="sidebar-footer">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="logout-btn">Logout</button>
+            </form>
         </div>
-    </nav>
+    </aside>
 
     <!-- Main Content -->
     <div class="container">
@@ -74,20 +77,18 @@
         </table>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>Copyright © 2024-2027 Akbar. Hak Cipta. All rights reserved.</p>
-            <div class="social-icons">
-                <a href="#" class="social-icon-1">
-                    <img src="{{ asset('images/tk.png') }}" alt="Logo">
-                </a>
-                <a href="#" class="social-icon">
-                    <img src="{{ asset('images/ig.jfif') }}" alt="Logo">
-                </a>
-            </div>
+    <footer class="footer">
+        <p>Copyright © 2024-2027 Akbar. Hak Cipta. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon-1">
+                <img src="{{ asset('images/tk.png') }}" alt="Logo">
+            </a>
+            <a href="#" class="social-icon">
+                <img src="{{ asset('images/ig.jfif') }}" alt="Logo">
+            </a>
         </div>
     </footer>
+
 
     <script src="{{ asset('js/admin.js') }}"></script>
 

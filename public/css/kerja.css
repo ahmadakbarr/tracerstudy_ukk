@@ -1,56 +1,17 @@
 /* Global Styles */
+
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f7fa;
+   font-family: 'Arial', sans-serif;
+   margin: 0;
+   padding: 0;
+   height: 800px;
+   flex-direction: column;
+   display: flex;
+   background-color: #f4f7fa;
 }
 
-/* Navigation Bar */
-nav {
-    background-color: #4e73df;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-.profile {
-    display: flex;
-    align-items: center;
-}
 
-.logo img {
-    height: 40px;
-    margin-right: 10px;
-}
-
-.Username {
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.menu {
-    display: flex;
-    gap: 20px;
-}
-
-.menu button {
-    background-color: #f8f9fa;
-    color: #4e73df;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.menu button:hover {
-    background-color: #2e59d9;
-    color: white;
-}
 
 /* Main Container */
 .container {
@@ -117,26 +78,10 @@ td button:hover {
     background-color: #c82333;
 }
 
-/* Footer Styles */
-footer {
-    background-color: #4e73df;
-    color: white;
-    padding: 20px;
-    margin-top: 30px;
-    text-align: center;
+.sidebar {
+    width: 100px;
 }
 
-.social-icons a {
-    margin: 0 10px;
-    display: inline-block;
-}
-
-.social-icons img {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease;
-}
-
-.social-icons img:hover {
-    transform: scale(1.1);
+.container {
+    margin-left: 280px;
 }

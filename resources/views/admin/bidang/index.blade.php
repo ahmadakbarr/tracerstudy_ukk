@@ -7,49 +7,32 @@
     <title>Pengaturan Privasi Alumni</title>
     <link rel="stylesheet" href="{{ asset('css/nav_admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bidang.css') }}">
+    
 </head>
 
 <body>
-    <nav>
-        <div class="profile">
-            <div class="logo">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo">
-            </div>
-            <div class="Username">
-                {{ Auth::user()->name }}           
-             </div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+            <p class="username">Welcome, {{ Auth::user()->name }}</p>
         </div>
-        <div class="menu">
-            <div class="menu-item">
-                <button onclick="window.location='{{ route('admin.dashboard') }}';">Home</button>
-            </div>
-            <div class="menu-item">
-                <button onclick="window.location='{{ route('admin.alumni.index') }}';">Data Alumni</button>
-            </div>
-            <div class="menu-item">
-                <button onclick="window.location='{{ route('admin.TracerKuliah.index') }}';">Tracer Kuliah</button>
-            </div>
-            <div class="menu-item">
-                <button onclick="window.location='{{ route('admin.TracerKerja.index') }}';">Tracer Kerja</button>            </div>
+        <nav class="menu">
+            <a href="{{ route('admin.dashboard') }}" class="menu-item">Dashboard</a>
+            <a href="{{ route('admin.alumni.index') }}" class="menu-item">Alumni Data</a>
+            <a href="{{ route('admin.TracerKuliah.index') }}" class="menu-item">Tracer Kuliah</a>
+            <a href="{{ route('admin.TracerKerja.index') }}" class="menu-item">Tracer Kerja</a>
+            <a href="{{ route('testimoni.index') }}" class="menu-item">Testimoni</a>
+        </nav>
+        <div class="sidebar-footer">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="logout-btn">Logout</button>
+            </form>
         </div>
-        <div class="menu_dropdown">
-            <button class="burger-icon" id="burgerMenu">
-                <img src="{{ asset('icons/dropdown.png') }}" alt="Icons">
-            </button>
-            <ul class="dropdown" id="dropdownMenu">
-                <button onclick="window.location='{{ route('login') }}';" class="dropdown-icon">
-                    <img src="{{ asset('icons/dropdown.png') }}" alt="Icons">
-                </button>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
-                    @csrf
-                    <button type="submit" class="dropdown-icon">
-                        <img src="{{ asset('icons/logout.png') }}" alt="Logout Icon">
-                    </button>
-                </form>
-            </ul>
-        </div>
-    </nav>
-    
+    </aside>
+
+    <!-- Main Content -->
     <div class="container">
         <h1>Daftar Bidang Keahlian</h1>
         <div class="tmbh">
@@ -72,7 +55,8 @@
                     <td>{{ $bidang->bidang_keahlian }}</td>
                     <td>
                         <a href="{{ route('bidang.edit', $bidang->id_bidang_keahlian) }}" class="btn btn-primary">Edit</a>
-                        <form action="{{ route('bidang.destroy', $bidang->id_bidang_keahlian) }}" method="POST" style="display: inline-block;">
+                        <form action="{{ route('bidang.destroy', $bidang->id_bidang_keahlian) }}" method="POST"
+                            style="display: inline-block;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Hapus</button>
@@ -84,21 +68,17 @@
         </table>
     </div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <p>Copyright © 2024-2027 Andika. Hak Cipta. All rights reserved.</p>
-            <div class="social-icons">
-                <a href="#" class="social-icon-1">
-                    <img src="{{ asset('images/tk.png') }}" alt="Logo">
-                </a>
-                <a href="#" class="social-icon">
-                    <img src="{{ asset('images/ig.jfif') }}" alt="Logo">
-                </a>
-            </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024-2027 Akbar. Hak Cipta. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#"><img src="{{ asset('images/tk.png') }}" alt="Telegram"></a>
+            <a href="#"><img src="{{ asset('images/ig.jfif') }}" alt="Instagram"></a>
         </div>
     </footer>
 
     <script>
+        // Burger Menu for responsive layout
         const burgerMenu = document.getElementById('burgerMenu');
         const dropdownMenu = document.getElementById('dropdownMenu');
 
